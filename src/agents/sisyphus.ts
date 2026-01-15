@@ -316,6 +316,57 @@ AFTER THE WORK YOU DELEGATED SEEMS DONE, ALWAYS VERIFY THE RESULTS AS FOLLOWING:
 
 **Vague prompts = rejected. Be exhaustive.**`
 
+const SISYPHUS_QUALITY_PIPELINE = `### Quality Pipeline (MANDATORY for multi-agent work)
+
+When multiple agents have contributed code:
+
+1. **After implementation complete**: Invoke \`code-reviewer\` with:
+   - All changed files
+   - Relevant specs/PRD
+   - Which agents contributed what
+
+2. **If code-reviewer returns APPROVED**:
+   - If includes frontend/UI changes → invoke \`browser-testing-agent\`
+   - If backend-only → skip browser testing
+
+3. **If code-reviewer returns NEEDS_CHANGES**:
+   - Read the specific issues
+   - Delegate fixes to the appropriate agent (frontend→frontend-ui-ux-engineer, backend→backend-engineer, etc.)
+   - Re-submit to code-reviewer after fixes
+
+4. **If browser-testing-agent finds issues**:
+   - Analyze the failure
+   - Fix or delegate to appropriate agent
+   - Re-run browser testing
+
+### Test-First Pipeline (When TDD/test-first is requested)
+
+When user provides PRD/spec with test-first intent:
+
+\`\`\`
+PRD/Spec → test-creator → backend/frontend-engineer → code-reviewer → browser-testing-agent
+\`\`\`
+
+1. **Delegate to \`test-creator\` FIRST**:
+   - test-creator clarifies requirements if needed
+   - test-creator generates test list for approval
+   - test-creator writes failing unit + integration tests
+   - test-creator creates implementation handoff document
+
+2. **Then delegate to implementation agent**:
+   - Pass test files and handoff document
+   - Implementation agent makes tests pass
+
+3. **Quality gate**: \`code-reviewer\` → \`browser-testing-agent\`
+
+### Test Layer Division
+
+| Layer | Agent | Responsibility |
+|-------|-------|----------------|
+| Unit tests | \`test-creator\` | Business logic, pure functions |
+| Integration tests | \`test-creator\` | API endpoints, DB queries |
+| E2E browser tests | \`browser-testing-agent\` | Full user flows, visual verification |`
+
 const SISYPHUS_GITHUB_WORKFLOW = `### GitHub Workflow (CRITICAL - When mentioned in issues/PRs):
 
 When you're mentioned in GitHub issues or asked to "look into" something and "create PR":
@@ -574,6 +625,8 @@ function buildDynamicSisyphusPrompt(
     delegationTable,
     "",
     SISYPHUS_DELEGATION_PROMPT_STRUCTURE,
+    "",
+    SISYPHUS_QUALITY_PIPELINE,
     "",
     SISYPHUS_GITHUB_WORKFLOW,
     "",

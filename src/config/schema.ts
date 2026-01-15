@@ -118,6 +118,7 @@ export const AgentOverrideConfigSchema = z.object({
   permission: AgentPermissionSchema.optional(),
 })
 
+// Built-in agent names for type safety, but allow any custom agent via catchall
 export const AgentOverridesSchema = z.object({
   build: AgentOverrideConfigSchema.optional(),
   plan: AgentOverrideConfigSchema.optional(),
@@ -134,7 +135,7 @@ export const AgentOverridesSchema = z.object({
   "document-writer": AgentOverrideConfigSchema.optional(),
   "multimodal-looker": AgentOverrideConfigSchema.optional(),
   "orchestrator-sisyphus": AgentOverrideConfigSchema.optional(),
-})
+}).catchall(AgentOverrideConfigSchema) // Allow custom agents with any name
 
 export const ClaudeCodeConfigSchema = z.object({
   mcp: z.boolean().optional(),
