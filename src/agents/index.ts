@@ -9,6 +9,12 @@ import { multimodalLookerAgent } from "./multimodal-looker"
 import { metisAgent } from "./metis"
 import { orchestratorSisyphusAgent } from "./orchestrator-sisyphus"
 import { momusAgent } from "./momus"
+// Custom agents
+import { backendEngineerAgent } from "./backend-engineer"
+import { databaseEngineerAgent } from "./database-engineer"
+import { codeReviewerAgent } from "./code-reviewer"
+import { browserTestingAgentAgent } from "./browser-testing-agent"
+import { testCreatorAgent } from "./test-creator"
 
 export const builtinAgents: Record<string, AgentConfig> = {
   Sisyphus: sisyphusAgent,
@@ -21,6 +27,12 @@ export const builtinAgents: Record<string, AgentConfig> = {
   "Metis (Plan Consultant)": metisAgent,
   "Momus (Plan Reviewer)": momusAgent,
   "orchestrator-sisyphus": orchestratorSisyphusAgent,
+  // Custom agents for extended pipeline
+  "backend-engineer": backendEngineerAgent,
+  "database-engineer": databaseEngineerAgent,
+  "code-reviewer": codeReviewerAgent,
+  "browser-testing-agent": browserTestingAgentAgent,
+  "test-creator": testCreatorAgent,
 }
 
 export * from "./types"
