@@ -67,6 +67,12 @@ export type BuiltinAgentName =
   | "Metis (Plan Consultant)"
   | "Momus (Plan Reviewer)"
   | "orchestrator-sisyphus"
+  // Custom agents for extended pipeline
+  | "backend-engineer"
+  | "db-engineer"
+  | "code-reviewer"
+  | "browser-tester"
+  | "test-creator"
 
 export type OverridableAgentName =
   | "build"

@@ -1,7 +1,8 @@
 import type { AgentConfig } from "@opencode-ai/sdk"
 import type { AgentPromptMetadata } from "./types"
+import { createAgentToolRestrictions } from "../shared/permission-compat"
 
-const DEFAULT_MODEL = "google/gemini-3-pro"
+const DEFAULT_MODEL = "anthropic/claude-sonnet-4-5"
 
 export const BROWSER_TESTING_AGENT_PROMPT_METADATA: AgentPromptMetadata = {
   category: "specialist",
@@ -138,11 +139,16 @@ For each test case:
 - Include enough evidence for debugging`
 
 export function createBrowserTestingAgent(model: string = DEFAULT_MODEL): AgentConfig {
+  const restrictions = createAgentToolRestrictions([
+    "git_commit", // Browser testing agent shouldn't commit
+  ])
+  
   return {
     description: "E2E Browser Testing Agent - Final verification gate using Playwright for comprehensive browser testing.",
     mode: "subagent" as const,
     model,
     temperature: 0.1,
+    ...restrictions,
     prompt: BROWSER_TESTING_AGENT_SYSTEM_PROMPT,
     color: "#E74C3C",
   } as AgentConfig

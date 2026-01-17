@@ -31,7 +31,7 @@ export const builtinAgents: Record<string, AgentConfig> = {
   "backend-engineer": backendEngineerAgent,
   "database-engineer": databaseEngineerAgent,
   "code-reviewer": codeReviewerAgent,
-  "browser-testing-agent": browserTestingAgentAgent,
+  "browser-tester": browserTestingAgentAgent,
   "test-creator": testCreatorAgent,
 }
 
