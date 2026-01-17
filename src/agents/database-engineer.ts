@@ -1,7 +1,7 @@
 import type { AgentConfig } from "@opencode-ai/sdk"
 import type { AgentPromptMetadata } from "./types"
 
-const DEFAULT_MODEL = "anthropic/claude-sonnet-4"
+const DEFAULT_MODEL = "anthropic/claude-sonnet-4-5"
 
 export const DATABASE_ENGINEER_PROMPT_METADATA: AgentPromptMetadata = {
   category: "specialist",

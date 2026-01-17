@@ -11,6 +11,12 @@ import { createMultimodalLookerAgent, MULTIMODAL_LOOKER_PROMPT_METADATA } from "
 import { createMetisAgent } from "./metis"
 import { createOrchestratorSisyphusAgent, orchestratorSisyphusAgent } from "./orchestrator-sisyphus"
 import { createMomusAgent } from "./momus"
+// Custom agents for extended pipeline
+import { createBackendEngineerAgent, BACKEND_ENGINEER_PROMPT_METADATA } from "./backend-engineer"
+import { createDatabaseEngineerAgent, DATABASE_ENGINEER_PROMPT_METADATA } from "./database-engineer"
+import { createCodeReviewerAgent, CODE_REVIEWER_PROMPT_METADATA } from "./code-reviewer"
+import { createBrowserTestingAgent, BROWSER_TESTING_AGENT_PROMPT_METADATA } from "./browser-testing-agent"
+import { createTestCreatorAgent, TEST_CREATOR_PROMPT_METADATA } from "./test-creator"
 import type { AvailableAgent } from "./sisyphus-prompt-builder"
 import { deepMerge } from "../shared"
 import { DEFAULT_CATEGORIES } from "../tools/sisyphus-task/constants"
@@ -29,6 +35,12 @@ const agentSources: Record<BuiltinAgentName, AgentSource> = {
   "Metis (Plan Consultant)": createMetisAgent,
   "Momus (Plan Reviewer)": createMomusAgent,
   "orchestrator-sisyphus": orchestratorSisyphusAgent,
+  // Custom agents for extended pipeline
+  "backend-engineer": createBackendEngineerAgent,
+  "db-engineer": createDatabaseEngineerAgent,
+  "code-reviewer": createCodeReviewerAgent,
+  "browser-tester": createBrowserTestingAgent,
+  "test-creator": createTestCreatorAgent,
 }
 
 /**
@@ -42,6 +54,12 @@ const agentMetadata: Partial<Record<BuiltinAgentName, AgentPromptMetadata>> = {
   "frontend-ui-ux-engineer": FRONTEND_PROMPT_METADATA,
   "document-writer": DOCUMENT_WRITER_PROMPT_METADATA,
   "multimodal-looker": MULTIMODAL_LOOKER_PROMPT_METADATA,
+  // Custom agents for extended pipeline
+  "backend-engineer": BACKEND_ENGINEER_PROMPT_METADATA,
+  "db-engineer": DATABASE_ENGINEER_PROMPT_METADATA,
+  "code-reviewer": CODE_REVIEWER_PROMPT_METADATA,
+  "browser-tester": BROWSER_TESTING_AGENT_PROMPT_METADATA,
+  "test-creator": TEST_CREATOR_PROMPT_METADATA,
 }
 
 function isFactory(source: AgentSource): source is AgentFactory {
