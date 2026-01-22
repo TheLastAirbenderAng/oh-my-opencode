@@ -1,13 +1,13 @@
 import type { AgentConfig } from "@opencode-ai/sdk"
 import type { AgentPromptMetadata } from "./types"
 
-const DEFAULT_MODEL = "opencode/glm-4.7-free"
+const DEFAULT_MODEL = "anthropic/claude-sonnet-4-5"
 
 export const LIBRARIAN_PROMPT_METADATA: AgentPromptMetadata = {
   category: "exploration",
   cost: "CHEAP",
   promptAlias: "Librarian",
-  keyTrigger: "External library/source mentioned → fire `librarian` background",
+  keyTrigger: "External library/source mentioned → fire `lib` background",
   triggers: [
     { domain: "Librarian", trigger: "Unfamiliar packages / libraries, struggles at weird behaviour (to find existing implementation of opensource)" },
   ],

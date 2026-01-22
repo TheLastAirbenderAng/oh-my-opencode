@@ -19,10 +19,10 @@ import { testCreatorAgent } from "./test-creator"
 export const builtinAgents: Record<string, AgentConfig> = {
   Sisyphus: sisyphusAgent,
   oracle: oracleAgent,
-  librarian: librarianAgent,
+  lib: librarianAgent,
   explore: exploreAgent,
-  "frontend-ui-ux-engineer": frontendUiUxEngineerAgent,
-  "document-writer": documentWriterAgent,
+  "ui-ux": frontendUiUxEngineerAgent,
+  "doc-writer": documentWriterAgent,
   "multimodal-looker": multimodalLookerAgent,
   "Metis (Plan Consultant)": metisAgent,
   "Momus (Plan Reviewer)": momusAgent,

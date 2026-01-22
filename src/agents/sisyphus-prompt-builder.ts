@@ -163,7 +163,7 @@ ${useWhen.map((w) => `|  | ${w} |`).join("\n")}`
 }
 
 export function buildLibrarianSection(agents: AvailableAgent[]): string {
-  const librarianAgent = agents.find((a) => a.name === "librarian")
+  const librarianAgent = agents.find((a) => a.name === "lib")
   if (!librarianAgent) return ""
 
   const useWhen = librarianAgent.metadata.useWhen || []
@@ -203,7 +203,7 @@ export function buildDelegationTable(agents: AvailableAgent[]): string {
 }
 
 export function buildFrontendSection(agents: AvailableAgent[]): string {
-  const frontendAgent = agents.find((a) => a.name === "frontend-ui-ux-engineer")
+  const frontendAgent = agents.find((a) => a.name === "ui-ux")
   if (!frontendAgent) return ""
 
   return `### Frontend Files: Decision Gate (NOT a blind block)
@@ -260,7 +260,7 @@ Briefly announce "Consulting Oracle for [reason]" before invocation.
 }
 
 export function buildHardBlocksSection(agents: AvailableAgent[]): string {
-  const frontendAgent = agents.find((a) => a.name === "frontend-ui-ux-engineer")
+  const frontendAgent = agents.find((a) => a.name === "ui-ux")
 
   const blocks = [
     "| Type error suppression (`as any`, `@ts-ignore`) | Never |",
@@ -283,7 +283,7 @@ ${blocks.join("\n")}`
 }
 
 export function buildAntiPatternsSection(agents: AvailableAgent[]): string {
-  const frontendAgent = agents.find((a) => a.name === "frontend-ui-ux-engineer")
+  const frontendAgent = agents.find((a) => a.name === "ui-ux")
 
   const patterns = [
     "| **Type Safety** | `as any`, `@ts-ignore`, `@ts-expect-error` |",
@@ -324,7 +324,7 @@ export function buildUltraworkAgentSection(agents: AvailableAgent[]): string {
   const lines: string[] = []
   for (const agent of sortedAgents) {
     const shortDesc = agent.description.split(".")[0] || agent.description
-    const suffix = (agent.name === "explore" || agent.name === "librarian") ? " (multiple)" : ""
+    const suffix = (agent.name === "explore" || agent.name === "lib") ? " (multiple)" : ""
     lines.push(`- **${agent.name}${suffix}**: ${shortDesc}`)
   }
 

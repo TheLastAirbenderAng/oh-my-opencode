@@ -59,10 +59,10 @@ export function isGptModel(model: string): boolean {
 export type BuiltinAgentName =
   | "Sisyphus"
   | "oracle"
-  | "librarian"
+  | "lib"
   | "explore"
-  | "frontend-ui-ux-engineer"
-  | "document-writer"
+  | "ui-ux"
+  | "doc-writer"
   | "multimodal-looker"
   | "Metis (Plan Consultant)"
   | "Momus (Plan Reviewer)"

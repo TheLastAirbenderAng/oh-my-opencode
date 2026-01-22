@@ -27,9 +27,9 @@ function buildAgentSelectionSection(agents: AvailableAgent[]): string {
 |-------|----------|
 | \`oracle\` | Read-only consultation. High-IQ debugging, architecture design |
 | \`explore\` | Codebase exploration, pattern finding |
-| \`librarian\` | External docs, GitHub examples, OSS reference |
-| \`frontend-ui-ux-engineer\` | Visual design, UI implementation |
-| \`document-writer\` | README, API docs, guides |
+| \`lib\` | External docs, GitHub examples, OSS reference |
+| \`ui-ux\` | Visual design, UI implementation |
+| \`doc-writer\` | README, API docs, guides |
 | \`git-master\` | Git commits (ALWAYS use for commits) |
 | \`debugging-master\` | Complex debugging sessions |`
   }
@@ -118,7 +118,7 @@ function buildDecisionMatrix(agents: AvailableAgent[], userCategories?: Record<s
   const agentNames = agents.map((a) => a.name)
   if (agentNames.includes("oracle")) rows.push("| Code review / architecture | `agent=\"oracle\"` |")
   if (agentNames.includes("explore")) rows.push("| Find code in codebase | `agent=\"explore\"` |")
-  if (agentNames.includes("librarian")) rows.push("| Look up library docs | `agent=\"librarian\"` |")
+  if (agentNames.includes("lib")) rows.push("| Look up library docs | `agent=\"lib\"` |")
   rows.push("| Git commit | `agent=\"git-master\"` |")
   rows.push("| Debug complex issue | `agent=\"debugging-master\"` |")
 

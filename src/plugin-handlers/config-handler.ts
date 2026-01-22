@@ -130,7 +130,7 @@ export function createConfigHandler(deps: ConfigHandlerDeps) {
       build?: Record<string, unknown>;
       plan?: Record<string, unknown>;
       explore?: { tools?: Record<string, unknown> };
-      librarian?: { tools?: Record<string, unknown> };
+      lib?: { tools?: Record<string, unknown> };
       "multimodal-looker"?: { tools?: Record<string, unknown> };
       "orchestrator-sisyphus"?: { tools?: Record<string, unknown> };
     };
@@ -247,9 +247,9 @@ export function createConfigHandler(deps: ConfigHandlerDeps) {
         call_omo_agent: false,
       };
     }
-    if (agentResult.librarian) {
-      agentResult.librarian.tools = {
-        ...agentResult.librarian.tools,
+    if (agentResult.lib) {
+      agentResult.lib.tools = {
+        ...agentResult.lib.tools,
         call_omo_agent: false,
         "grep_app_*": true,
       };

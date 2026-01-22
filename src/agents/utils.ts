@@ -26,10 +26,10 @@ type AgentSource = AgentFactory | AgentConfig
 const agentSources: Record<BuiltinAgentName, AgentSource> = {
   Sisyphus: createSisyphusAgent,
   oracle: createOracleAgent,
-  librarian: createLibrarianAgent,
+  lib: createLibrarianAgent,
   explore: createExploreAgent,
-  "frontend-ui-ux-engineer": createFrontendUiUxEngineerAgent,
-  "document-writer": createDocumentWriterAgent,
+  "ui-ux": createFrontendUiUxEngineerAgent,
+  "doc-writer": createDocumentWriterAgent,
   "multimodal-looker": createMultimodalLookerAgent,
   "Metis (Plan Consultant)": createMetisAgent,
   "Momus (Plan Reviewer)": createMomusAgent,
@@ -48,10 +48,10 @@ const agentSources: Record<BuiltinAgentName, AgentSource> = {
  */
 const agentMetadata: Partial<Record<BuiltinAgentName, AgentPromptMetadata>> = {
   oracle: ORACLE_PROMPT_METADATA,
-  librarian: LIBRARIAN_PROMPT_METADATA,
+  lib: LIBRARIAN_PROMPT_METADATA,
   explore: EXPLORE_PROMPT_METADATA,
-  "frontend-ui-ux-engineer": FRONTEND_PROMPT_METADATA,
-  "document-writer": DOCUMENT_WRITER_PROMPT_METADATA,
+  "ui-ux": FRONTEND_PROMPT_METADATA,
+  "doc-writer": DOCUMENT_WRITER_PROMPT_METADATA,
   "multimodal-looker": MULTIMODAL_LOOKER_PROMPT_METADATA,
   // Custom agents for extended pipeline
   "backend-engineer": BACKEND_ENGINEER_PROMPT_METADATA,
@@ -153,7 +153,7 @@ export function createBuiltinAgents(
 
     let config = buildAgent(source, model)
 
-    if (agentName === "librarian" && directory && config.prompt) {
+    if (agentName === "lib" && directory && config.prompt) {
       const envContext = createEnvContext()
       config = { ...config, prompt: config.prompt + envContext }
     }
